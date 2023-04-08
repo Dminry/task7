@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -9,14 +8,12 @@ public class Main {
         people.add(new Person("Дмитрий", "Дмитриев", 30));
         people.add(new Person("Иван", "Иванов-Петров", 25));
         people.add(new Person("Вероника", "Сергеева", 40));
-        people.add(new Person("Том", "Ли", 35));
-        people.add(new Person("Борис", "Джонсон", 60));
+        people.add(new Person("Том", "Ли", 8));
+        people.add(new Person("Борис", "Джонсон", 17));
 
-        Collections.sort(people, new MyComparator());
+        people.removeIf(person -> person.getAge() < 18);
+        people.forEach(System.out::println);
 
 
-        for (Person person : people) {
-            System.out.println(person);
-        }
     }
 }
