@@ -12,11 +12,26 @@ public class Main {
         people.add(new Person("Том", "Ли", 35));
         people.add(new Person("Борис", "Джонсон", 60));
 
-        Collections.sort(people, new MyComparator());
-
-
-        for (Person person : people) {
-            System.out.println(person);
-        }
+        Collections.sort(people,
+                (person1, person2) -> {
+                    int wordCount1 = person1.getSurName().split("-").length;
+                    int wordCount2 = person2.getSurName().split("-").length;
+                    if (wordCount1 > wordCount2) {
+                        return - 1;
+                    } else if (wordCount1 < wordCount2) {
+                        return 1;
+                    } else {
+                        if (person1.getAge() > person2.getAge()) {
+                            return -1;
+                        } else if (person1.getAge() < person2.getAge()) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    }
+                }
+        ) ;
+        people.forEach(System.out::println);
     }
+
 }
